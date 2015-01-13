@@ -12,8 +12,8 @@ jquery.bind.js这个是实用的[jQuery](http://jquery.com/)插件，在一些ht
 ```
 
 # 功能列表
-1. [返回顶部](//github.com/kyo4311/jqueyr.bind.js/wiki/返回顶部的使用方法)
-2. [Hover加类名](//github.com/kyo4311/jqueyr.bind.js/wiki/鼠标移上去自动加类)
+1. 返回顶部
+2. Hover加类名
 3. Fixed加类名
 4. Tab切换特效
 5. Banner特效
