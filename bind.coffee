@@ -4,11 +4,13 @@ $ ->
   click = "click"
   mouseover = "mouseover"
   mouseout = "mouseout"
+  scroll = "scroll"
+  $window = $ window
 
   # 回到顶部
   do ->
     body
-      .on "click", "[bind-gotop]", ->
+      .on click, "[bind-gotop]", ->
         $ "body, html"
           .stop().animate scrollTop : 0, 500
 
@@ -17,6 +19,7 @@ $ ->
     body
       .on mouseover, "[bind-hover]", ->
         $(this).addClass "bind-hover"
+
       .on mouseout, "[bind-hover]",  ->
         $(this).removeClass "bind-hover"
 
@@ -132,27 +135,27 @@ $ ->
 
   # Fix 固定
   do ->
-    fixBox = $ "[bind-fix]"         #需要定位的对象
-    if fixBox.length > 0
-      id = fixBox.attr "bind-fix"
-      pattern = /^[1-9]\d*$/
-      test = pattern.test(id)
-      reference = $("#" + id)         #参照物
-      if test
-        fixT = parseInt(id)
-      else
-        fixT = reference.offset().top if reference.length > 0
-      $ window
-        .on "scroll", ->
-          t = $(window).scrollTop()
-          if t > fixT 
-            fixBox.addClass "bind-fix"
-          else
-            fixBox.removeClass "bind-fix"
+    fixBox = $ "[bind-fix]"           #需要定位的对象
+    attr = fixBox.attr "bind-fix"     #
+    test = /^[1-9]\d*$/.test(attr)
+    
+    if test
+      fixT = attr
+    else
+      reference = $("#" + attr) #参照物
+      fixT = reference.offset().top if reference.length > 0
+
+    $window
+      .on scroll, ->
+        t = $window.scrollTop()
+        if t > fixT 
+          fixBox.addClass "bind-fix"
+        else
+          fixBox.removeClass "bind-fix"
 
   #Pop 弹出层
   do ->
-    mask = $ "[bind-pop-mask]"   #遮罩层
+    mask = $ "[bind-pop-mask]"
     body
       .on click, "[bind-pop-btn]", ->
         mask.show()
