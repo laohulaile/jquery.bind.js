@@ -8,8 +8,7 @@
     p.bind-hover{ border: 1px solid red;}
     .gotop{width: 80px; height: 80px; background: #222222; position: fixed; right: 30px; bottom: 30px; color: #ffffff; text-align: center; line-height: 80px; cursor: pointer;}
   </style>
-  <script src="../jquery-1.11.2.min.js"></script>
-  <script src="../bind.js"></script>
+
 </head>
 <body>
 
@@ -36,6 +35,20 @@
     <p class="floor" bind-hover>j</p>
   </div>
 
-  <div bind-gotop class="gotop">GOTOP</div>
+  
+<script src="../jquery-1.11.2.min.js"></script>
+<script src="../bind.js"></script>
+<script>
+	$(function(){
+		$('<div bind-gotop class="gotop">GOTOP</div>')
+  		.appendTo('body')
+	});
+</script>
+
+
+
+
+
+ 
 </body>
 </html>
