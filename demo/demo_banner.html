@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <style>
+    .zoom{overflow: hidden; zoom:1;}
+    .hide{ display: none;}
+    .show{ display: block;}
+    .rel{ position: relative;}
+    .abs{ position: absolute;}
+
+    .banner{ height: 300px; border: 1px solid red; overflow: hidden;}
+    .banner-wrap{ height: 300px; left: 0; top: 0;}
+    .banner-block{ height: 300px; float: left; display: inline; position: relative; overflow: hidden;}
+    .banner-block img{position: absolute; left: 50%; margin-left:-960px;   overflow: hidden; }
+
+    .banner-btn{ width: 50px; height: 50px; line-height: 50px; text-align: center; background: #cccccc; top: 50%; margin-top:-25px; cursor: pointer; color: #777777; font-size: 40px;}
+    .banner-btn-right{ right: 0;}
+
+    .banner-dot-bar{text-align: center; bottom: 0; left: 0; width: 100%; height: 0;}
+
+    .banner-dot-bar i{ display: inline-block; width: 22px; height: 22px; line-height: 22px; border-radius: 50%; background: #cccccc; position: relative; top: -30px; font-style: normal; cursor: pointer;}
+    .banner-dot-bar i.bind-banner-dot-act{ background: red; color: #ffffff;}
+
+  </style>
+  <script src="../jquery-1.11.2.min.js"></script>
+  <script src="../bind.js"></script>
+</head>
+<body>
+  <div class="banner rel" bind-banner>
+      <div class="abs banner-wrap" bind-banner-wrap>
+          <div bind-banner-block class="banner-block"><a href="#link"><img src="img/a1.jpg" alt=""></a></div>
+          <div bind-banner-block class="banner-block"><a href="#link"><img src="img/a2.jpg" alt=""></a></div>
+          <div bind-banner-block class="banner-block"><a href="#link"><img src="img/a3.jpg" alt=""></a></div>
+          <div bind-banner-block class="banner-block"><a href="#link"><img src="img/a4.jpg" alt=""></a></div>
+      </div>
+      <div class="banner-dot-bar abs">
+        <i bind-banner-dot>1</i>
+        <i bind-banner-dot>2</i>
+        <i bind-banner-dot>3</i>
+        <i bind-banner-dot>4</i>
+      </div>
+      <div class="abs banner-btn banner-btn-left" bind-banner-left>&lt;</div>
+      <div class="abs banner-btn banner-btn-right" bind-banner-right>&gt;</div>
+  </div>
+</body>
+</html>

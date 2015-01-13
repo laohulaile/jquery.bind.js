@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <style>
+    .zoom{overflow: hidden; zoom:1;}
+    .hide{ display: none;}
+    .show{ display: block;}
+
+
+    .tab{ border: 1px solid #cccccc; width: 500px; height: 200px; margin: auto auto 20px auto; font-size: 14px;}
+    .tab-tit{ border-bottom:1px solid #cccccc; background: #efefef;}
+    .tab-tit a{ display: block; width: 100px; height: 28px; line-height: 28px; float: left; text-align: center; text-decoration: none; border-right:1px solid #cccccc; color: #222222;}
+    .tab-tit a.bind-hover{ background: #dddddd;}
+    .tab-tit a.bind-tab-tit-active{ background: #bbbbbb; color: #ffffff;}
+
+    .tab-nav{ padding: 10px;}
+
+
+  </style>
+  <script src="../jquery-1.11.2.min.js"></script>
+  <script src="../bind.js"></script>
+</head>
+<body>
+  <div class="tab" bind-tab="hover">
+      <div class="tab-tit zoom">
+        <a href="#" bind-tab-tit class="bind-tab-tit-active">体育</a>
+        <a href="#" bind-tab-tit>娱乐</a>
+        <a href="#" bind-tab-tit>财经</a>
+      </div>
+      <div bind-tab-nav class="tab-nav">这是第一块内容</div>
+      <div bind-tab-nav class="tab-nav hide">这是第二块内容</div>
+      <div bind-tab-nav class="tab-nav hide">这是第三块内容</div>
+  </div>
+
+  <div class="tab" bind-tab="click">
+      <div class="tab-tit zoom">
+        <a href="#" bind-tab-tit  class="bind-tab-tit-active">体育</a>
+        <a href="#" bind-tab-tit >娱乐</a>
+        <a href="#" bind-tab-tit >财经</a>
+      </div>
+      <div bind-tab-nav class="tab-nav">请点击切换</div>
+      <div bind-tab-nav class="tab-nav hide">这是第二块内容</div>
+      <div bind-tab-nav class="tab-nav hide">这是第三块内容</div>
+  </div>
+  
+  <div id="append">
+    <!--测试一下动太追加的元素-->
+  </div>
+
+<script>
+  var str = '<div class="tab" bind-tab="click">'
+      + '<div class="tab-tit zoom">'
+      + '<a href="#" bind-tab-tit bind-hover class="bind-tab-tit-active">体育</a>'
+      + '<a href="#" bind-tab-tit bind-hover>娱乐</a>'
+      + '<a href="#" bind-tab-tit bind-hover>财经</a>'
+      + '</div>'
+      + '<div bind-tab-nav class="tab-nav">这是第一块内容</div>'
+      + '<div bind-tab-nav class="tab-nav hide">这是第二块内容</div>'
+      + '<div bind-tab-nav class="tab-nav hide">这是第三块内容</div>'
+      + '</div>';
+  $('#append').append(str)
+</script>
+
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <style>
+    .floor{border: 1px solid #ccc; height: 50px;}
+    p.bind-hover{ border: 1px solid red;}
+    .gotop{width: 80px; height: 80px; background: #222222; position: fixed; right: 30px; bottom: 30px; color: #ffffff; text-align: center; line-height: 80px; cursor: pointer;}
+  </style>
+  <script src="../jquery-1.11.2.min.js"></script>
+  <script src="../bind.js"></script>
+</head>
+<body>
+
+  <div class="box">
+    <p class="floor" bind-hover>1</p>
+    <p class="floor" bind-hover>2</p>
+    <p class="floor" bind-hover>3</p>
+    <p class="floor" bind-hover>4</p>
+    <p class="floor" bind-hover>5</p>
+    <p class="floor" bind-hover>6</p>
+    <p class="floor" bind-hover>7</p>
+    <p class="floor" bind-hover>8</p>
+    <p class="floor" bind-hover>9</p>
+    <p class="floor" bind-hover>0</p>
+    <p class="floor" bind-hover>a</p>
+    <p class="floor" bind-hover>b</p>
+    <p class="floor" bind-hover>c</p>
+    <p class="floor" bind-hover>d</p>
+    <p class="floor" bind-hover>e</p>
+    <p class="floor" bind-hover>f</p>
+    <p class="floor" bind-hover>g</p>
+    <p class="floor" bind-hover>h</p>
+    <p class="floor" bind-hover>i</p>
+    <p class="floor" bind-hover>j</p>
+  </div>
+
+  <div bind-gotop class="gotop">GOTOP</div>
+</body>
+</html>
