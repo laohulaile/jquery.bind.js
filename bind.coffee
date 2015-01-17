@@ -87,7 +87,6 @@ $ ->
           if index < 0
               index = length - 1
               wrap.css("left", -width * length)
-          console.log 
 
           dot.eq(index % length).addClass(dotClass)
             .siblings().removeClass(dotClass)
@@ -167,4 +166,43 @@ $ ->
         num = $(this).attr "bind-pop-close"
         $("[bind-pop-box=#{num}]").hide()
 
+
+  #imgLazy
+  do ->
+
+    win = $(window)
+
+    watchScroll = ->
+      winHeight = win.height()
+      imgs = $('img[bind-imglazy]')
+
+      if imgs.length is 0 then win.off('scroll resize', watchScroll)
+
+      scrollTop = win.scrollTop()
+      loadimg(imgs, scrollTop, winHeight)
+
+    loadimg = (imgs, scrollTop, winHeight) ->
+        imgs.each ->
+          my = $ this
+          imgTop = my.offset().top - 100
+          imgHeight = my.height()
+          imgBottom = imgTop + imgHeight
+          winBottom = scrollTop + winHeight + 100
+          src = my.attr 'bind-imglazy'
+
+          load1 = imgBottom > scrollTop and imgBottom < winBottom
+          load2 = imgTop > scrollTop and imgTop < winBottom
+          load3 = imgTop < scrollTop and imgBottom > winBottom
+
+          if load1 or load2 or load3
+            my
+              .attr 'src', src
+              .load(->
+                my
+                .css 'opacity', 0
+                .animate({opacity : 1}, 200)
+                .removeAttr 'bind-imglazy'
+              )
+
+    win.on 'load scroll resize', watchScroll
 return

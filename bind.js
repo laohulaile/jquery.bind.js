@@ -82,7 +82,6 @@
             index = length - 1;
             wrap.css("left", -width * length);
           }
-          console.log;
           dot.eq(index % length).addClass(dotClass).siblings().removeClass(dotClass);
           return wrap.stop().animate({
             left: -width * index
@@ -145,7 +144,7 @@
         }
       });
     })();
-    return (function() {
+    (function() {
       var mask;
       mask = $("[bind-pop-mask]");
       return body.on(click, "[bind-pop-btn]", function() {
@@ -159,6 +158,42 @@
         num = $(this).attr("bind-pop-close");
         return $("[bind-pop-box=" + num + "]").hide();
       });
+    })();
+    return (function() {
+      var loadimg, watchScroll, win;
+      win = $(window);
+      watchScroll = function() {
+        var imgs, scrollTop, winHeight;
+        winHeight = win.height();
+        imgs = $('img[bind-imglazy]');
+        if (imgs.length === 0) {
+          win.off('scroll resize', watchScroll);
+        }
+        scrollTop = win.scrollTop();
+        return loadimg(imgs, scrollTop, winHeight);
+      };
+      loadimg = function(imgs, scrollTop, winHeight) {
+        return imgs.each(function() {
+          var imgBottom, imgHeight, imgTop, load1, load2, load3, my, src, winBottom;
+          my = $(this);
+          imgTop = my.offset().top - 100;
+          imgHeight = my.height();
+          imgBottom = imgTop + imgHeight;
+          winBottom = scrollTop + winHeight + 100;
+          src = my.attr('bind-imglazy');
+          load1 = imgBottom > scrollTop && imgBottom < winBottom;
+          load2 = imgTop > scrollTop && imgTop < winBottom;
+          load3 = imgTop < scrollTop && imgBottom > winBottom;
+          if (load1 || load2 || load3) {
+            return my.attr('src', src).load(function() {
+              return my.css('opacity', 0).animate({
+                opacity: 1
+              }, 200).removeAttr('bind-imglazy');
+            });
+          }
+        });
+      };
+      return win.on('load scroll resize', watchScroll);
     })();
   });
 
