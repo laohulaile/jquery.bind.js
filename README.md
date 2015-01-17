@@ -16,6 +16,7 @@ jquery.bind.js这个是实用的[jQuery](http://jquery.com/)插件，在一些ht
 4. Tab切换特效
 5. Banner特效
 6. 简易弹窗特效 
+7. 图片延时加载
 
 # 开发者
 本相，9169775@qq.com
